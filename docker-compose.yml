@@ -1,0 +1,19 @@
+version: '3.9'
+
+services:
+  app:
+    build: .
+    ports:
+      - "5000:5000"
+    environment:
+      - FLASK_ENV=development
+      - SECRET_KEY=your_secret_key
+      - JWT_SECRET_KEY=your_jwt_secret_key
+      - DATABASE_URL=postgresql://postgres:your_password@db:5432/devops_orange_site
+
+  db:
+    image: postgres:13
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=your_password
+      - POSTGRES_DB=devops_orange_site
